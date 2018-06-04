@@ -52,6 +52,16 @@ RCT_EXPORT_METHOD(sendTokenToIntercom:(NSString*)token callback:(RCTResponseSend
     callback(@[[NSNull null]]);
 }
 
+// Available as NativeModules.IntercomWrapper.onMessageRecieved
+RCT_EXPORT_METHOD(onMessageReceived:(NSDictionary*)message callback:(RCTResponseSenderBlock)callback) {
+    NSLog(@"onMessageRecieved");
+
+    // This is a stub. The iOS Intercom client use APNS to detecte the Message
+    // }
+
+    callback(@[[NSNull null]]);
+}
+
 // Available as NativeModules.IntercomWrapper.registerUnidentifiedUser
 RCT_EXPORT_METHOD(registerUnidentifiedUser:(RCTResponseSenderBlock)callback) {
     NSLog(@"registerUnidentifiedUser");

@@ -72,6 +72,21 @@ public class IntercomModule extends ReactContextBaseJavaModule {
     }
 
     @ReactMethod
+    public void onMessageReceived(ReadableMap message, Callback callback) {
+        if (getCurrentActivity() != null) {
+            if (intercomPushClient.isIntercomPush(message)) {
+            intercomPushClient.handlePush(getCurrentActivity().getApplication(), message);
+            Log.i(TAG, "messageHandledByIntercom");
+            callback.invoke(null, null);
+            } else {
+                Log.e(TAG, "messageNotHandledByIntercom");
+            }
+        } else {
+            Log.e(TAG, "onMessageReceived; getCurrentActivity() is null");
+        }
+    }
+
+    @ReactMethod
     public void registerUnidentifiedUser(Callback callback) {
         Intercom.client().registerUnidentifiedUser();
         Log.i(TAG, "registerUnidentifiedUser");

@@ -8,6 +8,12 @@ export type Notifications = 'UNREAD_CHANGE_NOTIFICATION';
 export function sendTokenToIntercom(token: any): Promise<void>;
 
 /**
+ * onMessageRecieved
+ * @param message
+ */
+export function onMessageReceived(message: any): Promise<void>;
+
+/**
  * registerUnidentifiedUser
  * @returns {Promise<void>}
  */
